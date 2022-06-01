@@ -1,7 +1,8 @@
 
 
 def get_cs():
-    """get string input"""
+    a=input()
+    return a
 
 
 def cs_to_dict(cs):
