@@ -11,4 +11,4 @@ print(sum)
 #print(sum([int(i) for i in re.findall("[0-9]+",open(name).read())]))
 #python ActivitySet01/problem12.py
 #ActivitySet01/final.txt
-#451824
+#451824.
