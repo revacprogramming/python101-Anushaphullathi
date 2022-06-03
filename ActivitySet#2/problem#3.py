@@ -19,4 +19,4 @@ def main():
 if __name__ == '__main__':
     main()
 #python ActivitySet02/problem04.py
-#system=s;database=d;username=u;password=p
+#system=s;database=d;username=u;password=p.
