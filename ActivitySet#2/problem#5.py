@@ -3,16 +3,15 @@ def get_cs():
     a=input()
     return a
 
-
 def cs_to_dict(cs):
     d={}
     cs=cs.split(";")
     for i in cs:
-        d.append(dir(i.split("=")))
+      my_list=i.split("=")
+      d[my_list[0]]=my_list[1]
     return(d)
-
 def dict_to_cs(d):
-     return(";".join([str(i[0]+"="+i[1]) for i in lot]))
+    return (";".join([str(i+"="+d[i]) for i in d]))
 
 def main():
     cs = get_cs()
@@ -22,7 +21,6 @@ def main():
 
     cs = dict_to_cs(d)
     print(cs)
-
 
 if __name__ == '__main__':
     main()
