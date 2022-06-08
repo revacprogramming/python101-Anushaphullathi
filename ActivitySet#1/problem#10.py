@@ -15,7 +15,7 @@ for line in handle:
     count[words]=count.get(words,0)+1
 print(words, count[words])
 
-.
+
 #method-2
 
 #filename = "dataset/mbox-short.txt"
@@ -58,3 +58,7 @@ print(words, count[words])
 #        words=words[1]
 #        count[words]=count.get(words,0)+1
 #print(words, count[words])
+ python ActivitySet#1/problem#10.py
+Enter the file name:dataset/mbox-short.txt
+cwen@iupui.edu 5
+ 
