@@ -8,4 +8,5 @@ for i in range(a):
       sum=sum+(1/x[0+k])
       #for l in range(b):
     print(f"{x} = {sum}")
+  #two for loops are used
   c
