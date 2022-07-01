@@ -17,7 +17,7 @@ for line in fread:
         term=sorted([(v,c) for v,c in d.items()])
 for v,c in term:
     print(v,c)
-
+..
 
 
 
