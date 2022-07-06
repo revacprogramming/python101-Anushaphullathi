@@ -1,3 +1,6 @@
 a=int(input())
 for i in range(a):
-  x=int(input().split())
+  x=input()
+  for letter in x:
+    
+    
