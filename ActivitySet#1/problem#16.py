@@ -6,7 +6,7 @@ cur = con.cursor()  #we send sql commands through cursor
 
 cur.excecute('Drop a table if exists')
 cur.excecute('''
-CREATE TABLE Counts(email TEXT,count INTEGER)''')...
+CREATE TABLE Counts(email TEXT,count INTEGER)''')....
 
 
 
