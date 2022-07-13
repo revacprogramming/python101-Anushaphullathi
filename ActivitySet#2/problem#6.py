@@ -14,8 +14,8 @@ class Menu:
       print(i,self.list())
       
 m = Menu()  # Menu is a class#m is object
-m.add("idly", 10)
-m.add("vada", 20)
+m+add("idly", 10)
+m+("vada", 20)
 print('idly ',m.idly)
 print('vada ',m.vada)
 m.show()

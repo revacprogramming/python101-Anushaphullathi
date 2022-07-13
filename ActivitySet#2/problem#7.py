@@ -5,11 +5,14 @@ class Menu:
         self.list = dict()
 
 
-    def add(self,x,n):
+    def __add__(self,t):
+        x=t[0]
+        n=t[1]
         if(x in self.list):
             self.list[x]+=n
         else:
             self.list[x]=n
+        return(self)
     def show(self):
          for i in self.list:
              print(i,self.list)
@@ -22,7 +25,5 @@ class Menu:
 
 
 m = Menu()
-m.add('idly',10)
-m.add('vada',20)
-
+m+('idly',10)+("pongal",20)
 print(m) # should print the menu properly
