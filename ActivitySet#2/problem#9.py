@@ -2,10 +2,13 @@
 
 class Menu(dict):
     """fill in class definition here"""
-
-
+  def __init__(self):
+    self.food = dict()
+    
 class Order:
     """fill in class definition here"""
+   def __getvalue__(self,key):
+      return(self.food[key])
 
 
 class Bill:
