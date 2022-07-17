@@ -5,6 +5,7 @@ def computepay(h,r) :
     elif h > 40 :
         p= 40*r + (h-40)*1.5*r
     return p
+  
 
 hrs = float(input("Enter hours : "))
 rt = float(input("Enter the rate : "))
