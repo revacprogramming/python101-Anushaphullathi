@@ -1,43 +1,54 @@
-# Databases
-# https://www.py4e.com/lessons/database
+# Using Web Services
+# https://www.py4e.com/lessons/servces
+#1 st program
+import urllib.request, urllib.parse, urllib.error
+import xml.etree.ElementTree as ET
+import ssl
 
-import sqlite3
+api_key = False
+# If you have a Google Places API key, enter it here
+# api_key = 'AIzaSy___IDByT70'
+# https://developers.google.com/maps/documentation/geocoding/intro
 
-conn = sqlite3.connect('emaildb2.sqlite')
-cur = conn.cursor()
+if api_key is False:
+    api_key = 42
+    serviceurl = 'http://py4e-data.dr-chuck.net/xml?'
+else :
+    serviceurl = 'https://maps.googleapis.com/maps/api/geocode/xml?'
 
-cur.execute('''
-DROP TABLE IF EXISTS Counts''')
+# Ignore SSL certificate errors
+ctx = ssl.create_default_context()
+ctx.check_hostname = False
+ctx.verify_mode = ssl.CERT_NONE
 
-cur.execute('''
-CREATE TABLE Counts (org TEXT, count INTEGER)''')
+sum = 0
 
-fname = input('Enter file name: ')
-if (len(fname) < 1): fname = 'mbox.txt'
-fh = open(fname)
-list_1 =[]
-for line in fh:
-    if not line.startswith('From: '): continue
-    pieces = line.split()
-    email = pieces[1]
-    dom = email.find('@')
-    org = email[dom+1:len(email)]
+while True:
+    address = input('Enter location: ')
+    if len(address) < 1: break
 
-    cur.execute('SELECT count FROM Counts WHERE org = ? ', (org,))
-    row = cur.fetchone()
-    if row is None:
-        cur.execute('''INSERT INTO Counts (org, count)
-                VALUES (?, 1)''', (org,))
-    else:
-        cur.execute('UPDATE Counts SET count = count + 1 WHERE org = ?',
-                    (org,))
-conn.commit()
-# https://www.sqlite.org/lang_select.html
-sqlstr = 'SELECT org, count FROM Counts ORDER BY count DESC LIMIT 10'
+    parms = dict()
+    parms['address'] = address
+    if api_key is not False: parms['key'] = api_key
+    url = serviceurl + urllib.parse.urlencode(parms)
+    print('Retrieving', url)
+    uh = urllib.request.urlopen(url, context=ctx)
 
-for row in cur.execute(sqlstr):
-    print(str(row[0]), row[1])
+    data = uh.read()
+    print('Retrieved', len(data), 'characters')
+    print(data.decode())
+    tree = ET.fromstring(data)
 
-cur.close()
+    results = tree.findall('result')
+    lat = results[0].find('geometry').find('location').find('lat').text
+    lng = results[0].find('geometry').find('location').find('lng').text
+    location = results[0].find('formatted_address').text
+
+    print('lat', lat, 'lng', lng)
+    print(location)
+    sum = tree.findall('contents')
+    sum+=sum
+print(sum)
+
 
 

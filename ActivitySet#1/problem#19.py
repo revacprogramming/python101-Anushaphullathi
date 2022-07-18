@@ -1,18 +1,13 @@
-import urllib.request, json
+#Json
+import json
+import urllib.request, urllib.parse, urllib.error
+sum = 0
+fhand = urllib.request.uropen('http://py4e-data.dr-chuck.net/comments_42.json')
+info = json.loads(fhand)
+print('User count:', len(info))
+for item in info:
+    sum = info.
+    sum+=sum
+print(sum)
 
-address = input('Enter location: ')
-print('Retrieving', address)
-with urllib.request.urlopen(address) as url:
-    raw = json.loads(url.read().decode())
 
-print('Retrieved', len(str(raw)), 'characters')
-data = raw.get("comments")
-#print(data)
-num = total = 0
-for i in range(len(data)):
-    tmp = data[i]
-    value = tmp.get("count")
-    num = num + 1
-    total = total + int(value)
-print("Count:",num)
-print("Sum:",total)
