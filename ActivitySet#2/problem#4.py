@@ -2,7 +2,6 @@
     a=input()
     return(a)
 
-
 def cs_to_lot(cs):
     l=[]
     cs=cs.split(";")
