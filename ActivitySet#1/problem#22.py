@@ -4,7 +4,6 @@ address = input('Enter location: ')
 print('Retrieving', address)
 with urllib.request.urlopen(address) as url:
     raw = json.loads(url.read().decode())
-
 print('Retrieved', len(str(raw)), 'characters')
 data = raw.get("comments")
 num = total = 0
