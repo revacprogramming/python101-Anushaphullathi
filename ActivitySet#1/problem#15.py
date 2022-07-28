@@ -1,5 +1,4 @@
-# 3 rd program
-  
+# 3 rd program  
 import urllib.request, urllib.parse, urllib.error
 from bs4 import BeautifulSoup
 import ssl
