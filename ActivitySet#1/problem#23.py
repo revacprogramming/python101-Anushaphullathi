@@ -14,5 +14,6 @@ for i in range(len(data)):
     value = tmp.get("count")
     num = num + 1
     total = total + int(value)
+  
 print("Count:",num)
 print("Sum:",total)
